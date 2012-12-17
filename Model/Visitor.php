@@ -5,7 +5,6 @@
 		var $name = 'Visitor';
 
 		var $hasMany = array(
-
 			'Message' => array(
 				'className' => 'Message',
 				'foreignKey' => 'visitor_id'
