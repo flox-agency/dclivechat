@@ -32,4 +32,8 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+<<<<<<< HEAD
+=======
+	//
+>>>>>>> 657d1e8d0fb1f55ce721e00d375e5164b75d828d
 }
