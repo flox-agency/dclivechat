@@ -2,11 +2,13 @@
 
 
 
-class Conversation extends AppController {
+class ConversationsController extends AppController {
+	var $name = 'Conversation';	
+	var $scaffold;
 	public $helpers = array(’Html’, ’Form’);
 	
 	public function index() {
-       $this->set(’posts’, $this->Post->find(’all’));
+       $this->set(’conversations’, $this->Conversation->find(’all’));
     }
 	
 }
