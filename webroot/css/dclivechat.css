@@ -1,0 +1,121 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+
+html, body {
+height: 100%;
+width: 100%;
+}
+
+body {
+font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+font-size: 12px;
+}
+
+.container {
+background-color: white;
+min-width: 1000px;
+position: absolute;
+visibility: visible;
+border: 0px;
+padding: 0px;
+margin: 0px;
+top: 0px;
+left: 0px;
+width: 100%;
+height: 100%;
+}
+
+.content {
+	top: 0px;
+right: 0px;
+bottom: 0px;
+left: 0px;
+overflow: hidden;
+position: absolute;
+}
+
+.main_menu{
+color: #BBB;
+overflow-x: hidden;
+-moz-box-shadow: 2px 2px 2px rgba(0,0,0,.1);
+-webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, .1);
+box-shadow: 2px 2px 2px rgba(0, 0, 0, .1);
+-moz-user-select: none;
+-webkit-user-select: none;
+-o-user-select: none;
+user-select: none;
+background: #333;
+padding-bottom: 5px;
+z-index: 20;
+border-right: 1px solid #222;
+-moz-border-radius-topleft: 0;
+-moz-border-radius-topright: 0;
+-moz-border-radius-bottomleft: 0;
+-moz-border-radius-bottomright: 3px;
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+border-bottom-left-radius: 0;
+border-bottom-right-radius: 3px;
+-webkit-border-top-left-radius: 0;
+-webkit-border-top-right-radius: 0;
+-webkit-border-bottom-left-radius: 0;
+-webkit-border-bottom-right-radius: 3px;
+top: 0px;
+bottom: 33px;
+width: 180px;
+position: absolute;
+}
+
+.right_column {
+	top: 0px;
+right: 0px;
+bottom: 0px;
+left: 180px;
+overflow: auto;
+position: absolute;
+}
+.right_column_container {
+top: 0px;
+right: 0px;
+bottom: 0px;
+left: 0px;
+overflow: auto;
+position: absolute;
+display: block;
+}
+.page_header{
+padding: 10px 15px;
+border-bottom: 1px solid #D8D8D8;
+background: #F0F0F0;
+position: relative;
+z-index: 2;
+}
+
+.h3 {
+font-size: 20px;
+color: #666;
+}
+
+.page_header .h3 {
+margin-top: 6px;
+font-weight: 300;
+text-rendering: optimizeLegibility;
+display: inline;
+}
+.group_count_text {
+font-size: 16px;
+font-weight: 300;
+color: #656565;
+text-align: right;
+display: inline-block;
+margin-right: 5px;
+}
+.group_count {
+color: #444;
+font-weight: 300;
+font-size: 16px;
+display: inline-block;
+}
+
