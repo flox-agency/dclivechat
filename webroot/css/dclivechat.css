@@ -164,6 +164,30 @@ text-transform: uppercase;
 padding: 5px 15px 6px 15px;
 }
 
+.number_tag {
+-moz-border-radius-topleft: 3px;
+-moz-border-radius-topright: 3px;
+-moz-border-radius-bottomleft: 3px;
+-moz-border-radius-bottomright: 3px;
+border-top-left-radius: 3px;
+border-top-right-radius: 3px;
+border-bottom-left-radius: 3px;
+border-bottom-right-radius: 3px;
+-webkit-border-top-left-radius: 3px;
+-webkit-border-top-right-radius: 3px;
+-webkit-border-bottom-left-radius: 3px;
+-webkit-border-bottom-right-radius: 3px;
+color: white;
+background: #BBB;
+font-weight: bold;
+font-size: 11px;
+display: inline-block;
+width: 22px;
+height: 17px;
+line-height: 17px;
+text-align: center;
+}
+
 .table_header {
 -moz-user-select: none;
 -webkit-user-select: none;
@@ -185,6 +209,10 @@ text-transform: uppercase;
 color: #BBB !important;
 }
 
+.activity_list .visitor_list_container {
+border-bottom: 1px solid #E5E5E5;
+padding-bottom: 4px;
+}
 .activity_list .visitor_table > div {
 padding: 0 0 0 10px;
 color: #555;
@@ -231,6 +259,13 @@ text-align: left;
 width: 70px;
 text-align: left;
 }
+
+.activity_list .number_tag {
+margin-right: 8px;
+float: left;
+line-height: 17px;
+padding-top: 0;
+}
 .activity_list .visitor_table .page_cell {
 width: 150px;
 }
@@ -238,3 +273,44 @@ width: 150px;
 display: none;
 text-align: left;
 }
+.activity_list .visitorlist_row {
+padding: 5px 0 5px 5px;
+margin: 0 15px 0 10px;
+border: 1px solid whiteSmoke;
+border-width: 1px 0 0;
+cursor: pointer;
+}
+.status_cell div {
+width: 18px;
+height: 18px;
+background: url(https://dashboard.zopim.com/dashboard/sprites/white.png);
+}
+.status_cell .status_icon_served {
+background-position: 0 -220px;
+}
+.flag {
+width: 12px;
+height: 12px;
+background: url(https://dashboard.zopim.com/dashboard/sprites/flags.png) no-repeat;
+}
+
+.flag.flag-fr {
+background-position: -129px -48px;
+}
+.platform {
+width: 16px;
+height: 16px;
+background: url(https://dashboard.zopim.com/dashboard/sprites/platforms.png) no-repeat;
+}
+.platform.Apple {
+background-position: -16px 0;
+}
+.browser {
+width: 16px;
+height: 16px;
+background: url(https://dashboard.zopim.com/dashboard/sprites/browsers.png) no-repeat;
+}
+.browser.Chrome {
+background-position: 0 0;
+}
+
