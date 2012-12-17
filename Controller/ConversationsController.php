@@ -3,14 +3,9 @@
 
 
 class ConversationsController extends AppController {
-	var $name = 'Conversation';	
+	var $name = 'Conversations';	
 	var $scaffold;
-	public $helpers = array(’Html’, ’Form’);
-	
-	public function index() {
-       $this->set(’conversations’, $this->Conversation->find(’all’));
-    }
-	
+
 }
 	
 
