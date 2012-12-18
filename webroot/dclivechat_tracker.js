@@ -1,7 +1,18 @@
 var dcTracker = (function () {
+
+	var url;
+	
 	return {
-		getText: function () {
-			return 'objet dc tracker';
+
+		setUrl: function (data) {
+			url = data;
+		},
+		trackPageView : function () {
+			alert(url);
+			$.post('/dclivechat/visits/add',{url:"'"+url+"'"},function(data) {
+			});
+
 		}
 	};
+	
 })();

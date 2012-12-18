@@ -1,0 +1,1 @@
+<?php echo 'L\'url est le suivant '.$url ?>

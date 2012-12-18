@@ -42,6 +42,10 @@
 			 $this->GetDetail();
 			
 		}
+
+		public function afficheBonjour() {
+			echo 'Hello World';
+		}
 		
 		
 		public function getIPAdress(){
