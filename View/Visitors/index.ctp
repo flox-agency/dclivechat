@@ -1,3 +1,4 @@
+<?php echo $this->Analytique->_constructDB(); ?>
 <div class="page_header">
 	<span class="h3">
 		Visiteurs sur votre site

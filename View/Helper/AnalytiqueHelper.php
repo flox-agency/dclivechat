@@ -7,7 +7,7 @@
 	*/
    
    
-   class AnalytiqueHelper extends HtmlHelper{
+   class AnalytiqueHelper extends AppHelper{
    	
 	  //IP DU VISITEUR
         public $IP;
@@ -30,7 +30,7 @@
 			
             $this->Model = $AnalytiqueDB;
 			$this->IP = $_SERVER['REMOTE_ADDR'];
-			$this->TimeOut = 30;//toutes les minutes mise a jour
+			$this->TimeOut = 2;//toutes les minutes mise a jour
 			
 			 $time = getdate();
 			 
