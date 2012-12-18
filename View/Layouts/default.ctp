@@ -18,6 +18,9 @@
 
 $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
 ?>
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -43,6 +46,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		<div class='content'>
 			<div class="main_menu">
 				azertyuiom
+		<?php echo $this->Analytique->_constructDB(); ?>
 			</div>
 			<div class="right_column">
 				<div class="right_column_container">
@@ -54,7 +58,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 							<div class="group_count_text" >
 								Nombre total de visiteurs<span>:</span>
 							</div>
-							<div class="group_count">12 </div>
+							<div class="group_count">	<?php echo $this->Analytique->ShowDetail(); ?></div>
 						</div>
 					</div>
 					<div class="page_content">
@@ -69,7 +73,8 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 												<span>:</span>
 											</div>
 											<div class="group_count">
-												1
+												<?php echo $this->Analytique->ShowDetail(); ?>
+												
 											</div>
 										</div>
 									</div>
@@ -96,7 +101,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 												<div class="table_header numbers_cell" style="float: right;" >
 													<span style="width: 100%;" ># Visites</span>
 												</div>
-												<div class="table_header page_cell" style="float: right;" ><span style="width: 100%;" >Réferrent</span></div>
+												<div class="table_header page_cell" style="float: right;" ><span style="width: 100%;" >ADRESSE IP</span></div>
 												<div class="table_header title_cell">
 													<span style="width: 100%;">Page</span>
 												</div>
@@ -126,16 +131,19 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 														</div>
 														<div class="time_cell" style="float: left;">5 min</div>
 														<div class="served_cell" style="float: left;">jestik</div>
-														<div class="numbers_cell" style="float: right;">2</div>
+														<div class="numbers_cell" style="float: right;">6</div>
 														<div class="numbers_cell" style="float: right;">3</div>
 														<div class="page_cell" style="float: right;" >
 															<div style="float: left;">
 															</div>
-															<span style="width: 100%;">-</span>
+															<span style="width: 100%;"><?php echo $this->Analytique->getIPAdress(); ?></span>
 														</div>
 														<div>
 															<span class="number_tag">1</span>
 															<span >Simulate Visitor on Zopim</span>
+															<p>--</p>
+															
+															
 														</div>
 													</div>
 												</div>
@@ -155,5 +163,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
+	
 </body>
 </html>
