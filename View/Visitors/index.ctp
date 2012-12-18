@@ -6,7 +6,9 @@
 		<div class="group_count_text" >
 			Nombre total de visiteurs<span>:</span>
 		</div>
-		<div class="group_count">12</div>
+		<div class="group_count">
+			<?php echo $this->Analytique->ShowDetail(); ?>
+		</div>
 	</div>
 </div>
 <div class="page_content">
@@ -21,7 +23,7 @@
 							<span>:</span>
 						</div>
 						<div class="group_count">
-							1
+							<?php echo $this->Analytique->ShowDetail(); ?>
 						</div>
 					</div>
 				</div>
@@ -48,7 +50,7 @@
 							<div class="table_header numbers_cell" style="float: right;" >
 								<span style="width: 100%;" ># Visites</span>
 							</div>
-							<div class="table_header page_cell" style="float: right;" ><span style="width: 100%;" >Réferrent</span></div>
+							<div class="table_header page_cell" style="float: right;" ><span style="width: 100%;" >Adresse IP</span></div>
 							<div class="table_header title_cell">
 								<span style="width: 100%;">Page</span>
 							</div>
@@ -83,7 +85,7 @@
 									<div class="page_cell" style="float: right;" >
 										<div style="float: left;">
 										</div>
-										<span style="width: 100%;">-</span>
+										<span style="width: 100%;"><?php echo $this->Analytique->getIPAdress(); ?></span>
 									</div>
 									<div>
 										<span class="number_tag">1</span>
