@@ -1,3 +1,7 @@
 var dcTracker = (function () {
-	return 'objet dc tracker';
-});
+	return {
+		getText: function () {
+			return 'objet dc tracker';
+		}
+	};
+})();
