@@ -5,19 +5,28 @@
 
 		public function add()
 		{
-			$url = $this->request->data['url'];
-			$time = new DateTime();
+			// Si la variable url dans le POST n'est pas nulle
+			if(!empty($this->request->data['url'])) {
 
-			$data[] = array();
+				$url = $this->request->data['url'];
 
-			$data['ip'] = CakeRequest::clientIp();
-			$data['time'] = $time->format('H:i');
-			$data['date_visit'] = $time->format('Y-m-d');
+				$time = new DateTime();
 
-			$this->Visit->create();
-			$this->Visit->save($data);
+				//Création de la visite à enregistrer
+				$data = array();
+				$data['ip'] = CakeRequest::clientIp();
+				$data['time'] = $time->format('H:i');
+				$data['date_visit'] = $time->format('Y-m-d');
 
-			$this->set('url',$url);
+				$this->Visit->create();
+				$visit = $this->Visit->save($data);
+
+				$this->set('visit',$visit['Visit']);
+				$this->set('_serialize', array('visit'));
+			} else {
+				$this->set('visit','');
+				$this->set('_serialize', array('visit'));
+			}
 		}
 	}
 

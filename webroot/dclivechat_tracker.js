@@ -9,7 +9,8 @@ var dcTracker = (function () {
 		},
 		trackPageView : function () {
 			alert(url);
-			$.post('/dclivechat/visits/add',{url:"'"+url+"'"},function(data) {
+			$.post('/dclivechat/visits/add.json',{url:"'"+url+"'"},function(data) {
+				console.log(data);
 			});
 
 		}
