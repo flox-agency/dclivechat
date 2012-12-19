@@ -5,18 +5,16 @@
 
 		public function add()
 		{
-			// Si la variable url dans le POST n'est pas nulle
-			if(!empty($this->request->data['url'])) {
+			// Si des variables sont passées en POST
+			if(!empty($this->request->data)) {
 
 				$url = $this->request->data['url'];
-
-				$time = new DateTime();
+				$localtime = $this->request->data['localtime'];
 
 				//Création de la visite à enregistrer
 				$data = array();
-				$data['ip'] = CakeRequest::clientIp();
-				$data['time'] = $time->format('H:i');
-				$data['date_visit'] = $time->format('Y-m-d');
+				$data['location_ip'] = CakeRequest::clientIp();
+				$data['visitor_localtime'] = $localtime;
 
 				$this->Visit->create();
 				$visit = $this->Visit->save($data);
