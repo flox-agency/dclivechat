@@ -81,16 +81,16 @@ var dcTracker = (function () {
 function genVisitorId () {
 
 	var d = new Date().getTime();
-    var y = new Date().getFullYear()
+    var y = new Date().getFullYear();
    
      var r = (d + Math.random()*12)%10 |0;
      var s =Math.floor(Math.random()*(y*(Math.random()*12)));
-     var t =  String.fromCharCode(r+97)
+     var t =  String.fromCharCode(r+97);
      var u =Math.floor(((Math.random()*1000)*d)/(d/1000));
      var f = (d + Math.random()*16)%10 |0;
     
      var z =  Math.floor(Math.random() * 26);
-     var g =  String.fromCharCode(z+97)
+     var g =  String.fromCharCode(z+97);
      
      var components = [r,s,t,u,f,z,g];
      
