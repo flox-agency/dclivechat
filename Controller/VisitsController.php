@@ -10,11 +10,13 @@
 
 				$url = $this->request->data['url'];
 				$localtime = $this->request->data['localtime'];
+				$visitorId = $this->request->data['visitorId'];
 
 				//Création de la visite à enregistrer
 				$data = array();
 				$data['location_ip'] = CakeRequest::clientIp();
 				$data['visitor_localtime'] = $localtime;
+				$data['visitor_id'] = $visitorId;
 
 				$this->Visit->create();
 				$visit = $this->Visit->save($data);
