@@ -42,22 +42,29 @@ var dcTracker = (function () {
 
 		getVisitorId : function () {
 
-			return (this.loadVisitorIdCookie());
+			return (this.loadVisitorId());
 		},
 
-		loadVisitorIdCookie : function (){
+		loadVisitorId : function (){
 			var now = new Date (),
 			nowTs = Math.round(now.getTime() / 1000),
 			tempContainer;
 
-			visitorUUID = genVisitorId();
+			visitorUUID = localStorage.getItem('uuid');
+
+			if(!visitorUUID) {
+				visitorUUID = genVisitorId();
+				localStorage.setItem('uuid',visitorUUID);
+			}
 
 			return visitorUUID;
 
 		},
 
 		trackPageView : function () {
-			console.log(this.getVisitorId());
+			console.log('domain : '+document.domain);
+			console.log('path : '+window.location.href);
+			
 			$.post('/dclivechat/visits/add.json',
 				{
 					url : "'"+url+"'",
@@ -68,7 +75,6 @@ var dcTracker = (function () {
 					console.log(data);
 				}
 			);
-
 		}
 	};
 
@@ -79,22 +85,16 @@ var dcTracker = (function () {
 *Fonction de génération d'un ID pour le visiteur.
 */
 function genVisitorId () {
-
 	var d = new Date().getTime();
-    var y = new Date().getFullYear();
-   
-     var r = (d + Math.random()*12)%10 |0;
-     var s =Math.floor(Math.random()*(y*(Math.random()*12)));
-     var t =  String.fromCharCode(r+97);
-     var u =Math.floor(((Math.random()*1000)*d)/(d/1000));
-     var f = (d + Math.random()*16)%10 |0;
-    
-     var z =  Math.floor(Math.random() * 26);
-     var g =  String.fromCharCode(z+97);
-     
-     var components = [r,s,t,u,f,z,g];
-     
-     var dc_uuid = components.join("");
-
+	var y = new Date().getFullYear();
+	var r = (d + Math.random()*12)%10 |0;
+	var s =Math.floor(Math.random()*(y*(Math.random()*12)));
+	var t = String.fromCharCode(r+97);
+	var u =Math.floor(((Math.random()*1000)*d)/(d/1000));
+	var f = (d + Math.random()*16)%10 |0;
+	var z = Math.floor(Math.random() * 26);
+	var g = String.fromCharCode(z+97);
+	var components = [r,s,t,u,f,z,g];
+	var dc_uuid = components.join("");
 	return dc_uuid;
 }
