@@ -60,7 +60,7 @@
 							</div>
 						</div>
 					</div>
-					 <?php foreach ($visitActives as $visitActives): ?>
+					 <?php foreach ($activesVisits as $activeVisit): ?>
 					<div class="list">
 						<div class="list_content">
 							<div class="visitorlist_row">
@@ -68,7 +68,7 @@
 									<div class="status_cell" style="float: left;">
 										<div class="status_icon_served"></div>
 									</div>
-									<div class="name_cell" style="float: left;" ><?php print_r($visitActives['Visit']['visitor_id']) ; ?></div>
+									<div class="name_cell" style="float: left;" ><?php echo $activeVisit['Visit']['visitor_id']; ?></div>
 									<div class="icons_cell" style="float: left">
 										<div style="padding: 3px; display: inline-block;" alt="Toulouse, Midi-Pyrenees, France">
 											<div class="flag flag-fr"></div>
@@ -80,14 +80,14 @@
 											<div class="browser Chrome"></div>
 										</div>
 									</div>
-									<div class="time_cell" style="float: left;">5 min</div>
+									<div class="time_cell" style="float: left;"><?php echo $this->Time->timeAgoInWords($activeVisit['Visit']['visitor_first_action_time'])  ?></div>
 									<div class="served_cell" style="float: left;">jestik</div>
 									<div class="numbers_cell" style="float: right;">2</div>
 									<div class="numbers_cell" style="float: right;">3</div>
 									<div class="page_cell" style="float: right;" >
 										<div style="float: left;">
 										</div>
-										<span style="width: 100%;">  </span>
+										<span style="width: 100%;"><?php echo $activeVisit['Visit']['location_ip'] ?> </span>
 									</div>
 									<div>
 										<span class="number_tag">1</span>
@@ -98,7 +98,6 @@
 						</div>
 					</div>
 					 <?php endforeach; ?>
-                     <?php unset($visitActives); ?>
 					<div>
 					</div>
 				</div>
