@@ -73,7 +73,8 @@ var dcTracker = (function () {
 				},
 				function(data) {
 					console.log(data);
-				}
+				},
+				'jsonp'
 			);
 		}
 	};
