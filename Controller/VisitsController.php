@@ -38,7 +38,7 @@
 
 				//vérification de l'existence d'une visite de l'utilisateur datant de moins d'une minute
 				$lastVisit = $this->Visit->find('first',array('conditions'=>array('visitor_id'=>$visitorId,
-																				'DATE_ADD(visitor_last_action_time, INTERVAL 60 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
+																				'DATE_ADD(visitor_last_action_time, INTERVAL 120 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
 																'order'=>'id DESC'));
 				
 				//Si aucune visite trouvée
