@@ -6,8 +6,11 @@
 		
 		
 		public function index(){
+
+			$serverTime = new DateTime();
 			
-			$activesVisits = $this->Visit->find('all');
+			$activesVisits = $this->Visit->find('all',array('conditions'=>array('DATE_ADD(visitor_last_action_time, INTERVAL 120 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
+																'order'=>'id DESC'));
 			$this->set('activesVisits',$activesVisits);			
 		}
 		
