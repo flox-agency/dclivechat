@@ -2,6 +2,28 @@
 
 	class VisitsController extends AppController {
 		var $name = 'Visits';
+		
+		
+		
+		public function index(){
+			
+			//$localtime = new DateTime($this->request->data['localtime']);
+			//$localtimeTimeStamp = $localtime->getTimestamp();
+			
+			
+			//$visitActives = $this->Visit->find('all',array('conditions'=>array($localtimeTimeStamp.'- UNIX_TIMESTAMP(visitor_localtime) <'=>'60')));
+			
+			$visitActives = $this->Visit->find('all');
+			
+			//$this->log($visitActives,'debug');
+			
+			
+			$this->set('visitActives',$visitActives);
+			//$this->set('_serialize', array('visitActives'));
+			
+		}
+		
+		
 
 		public function add()
 		{
