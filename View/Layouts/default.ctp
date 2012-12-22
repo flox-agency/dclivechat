@@ -29,10 +29,14 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 			<?php echo $cakeDescription ?>:
 			<?php echo $title_for_layout; ?>
 		</title>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 		<?php
+
+			echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js');
+			
 			echo $this->Html->meta('icon');
+
+			echo $this->Html->script('custom');
 
 			echo $this->Html->css('dclivechat');
 
