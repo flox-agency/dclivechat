@@ -1,9 +1,7 @@
 
 <div class="page_header">
 	<span class="h3">
-		<?php echo $this->Js->link('Visiteurs sur votre site',
-								array('action' => 'ajaxActivesVisits'),
-								array('update'=>'.activity_list')); ?>
+		Visiteurs sur votre site
 	</span>
 	<div style="float:right">
 		<div class="group_count_text" >
@@ -16,8 +14,11 @@
 </div>
 <div class="page_content">
 	<div class="content_wrapper">
-		<div class="activity_list">
-			<?php echo $this->element('activesVisitsList');?>
+		<div id="actives_visits_list"class="activity_list">
+			<?php echo $this->element('visitsList',array('title'=>'Visiteurs actifs','visits'=>$activesVisits));?>
+		</div>
+		<div id="inactives_visits_list" class="activity_list">
+			<?php echo $this->element('visitsList',array('title'=>'Visiteurs inactifs','visits'=>$inactivesVisits));?>
 		</div>
 	</div>
 </div>

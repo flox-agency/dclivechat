@@ -11,7 +11,13 @@
 			
 			$activesVisits = $this->Visit->find('all',array('conditions'=>array('DATE_ADD(visitor_last_action_time, INTERVAL 60 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
 																'order'=>'id DESC'));
-			$this->set('activesVisits',$activesVisits);			
+			$this->set('activesVisits',$activesVisits);
+			
+			$inactivesVisits = $this->Visit->find('all',array('conditions'=>array('DATE_ADD(visitor_last_action_time, INTERVAL 60 SECOND) <'=> $serverTime->format('Y-m-d H:i:s'),
+																				'DATE_ADD(visitor_last_action_time, INTERVAL 120 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
+																'order'=>'id DESC'));
+			$this->set('inactivesVisits',$inactivesVisits);
+
 		}
 		
 		
@@ -89,6 +95,20 @@
 				$activesVisits = $this->Visit->find('all',array('conditions'=>array('DATE_ADD(visitor_last_action_time, INTERVAL 60 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
 																'order'=>'id DESC'));
 				$this->set('activesVisits',$activesVisits);	
+
+			}
+ 		}
+
+ 		public function ajaxinactivesVisits()
+		{
+			if($this->request->is('ajax')) {
+
+				$this->layout = 'ajax';
+				$serverTime = new DateTime();			
+				$inactivesVisits = $this->Visit->find('all',array('conditions'=>array('DATE_ADD(visitor_last_action_time, INTERVAL 60 SECOND) <'=> $serverTime->format('Y-m-d H:i:s'),
+																				'DATE_ADD(visitor_last_action_time, INTERVAL 120 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
+																'order'=>'id DESC'));
+				$this->set('inactivesVisits',$inactivesVisits);	
 
 			}
  		}

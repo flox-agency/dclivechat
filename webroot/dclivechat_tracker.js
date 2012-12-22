@@ -7,7 +7,7 @@ var dcTracker = (function () {
 	return {
 
 		setUrl: function (data) {
-			url = data.href;
+			url = data;
 		},
 
 		/**
@@ -66,7 +66,7 @@ var dcTracker = (function () {
 			
 			this.loadVisitorInfo();
 
-			data.url = url;
+			data.url = url.href;
 			data.localtime = this.formatDate(localtime);
 			data.visitorId = visitorInfo.visitorId;
 			data.actionTs = localtime.getTime(); 

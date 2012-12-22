@@ -9,9 +9,18 @@ function refreshList () {
 		url:"\/dclivechat\/visits\/ajaxActivesVisits",
 		dataType:"html", 
 		success : function (data) {
-			$(".activity_list").html(data);
+			$("#actives_visits_list").html(data);
 		}
 	});
+
+	$.ajax({
+		url:"\/dclivechat\/visits\/ajaxInactivesVisits",
+		dataType:"html", 
+		success : function (data) {
+			$("#inactives_visits_list").html(data);
+		}
+	});
+
 	setTimeout(refreshList, 30*1000);
 	return false;
 }
