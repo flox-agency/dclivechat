@@ -90,7 +90,7 @@
 										<span style="width: 100%;"><?php echo $activeVisit['Visit']['location_ip'] ?> </span>
 									</div>
 									<div>
-										<span class="number_tag">1</span>
+										<span class="number_tag"><?php echo $activeVisit['Visit']['visit_total_actions'] ?> </span>
 										<span >Page d'accueil</span>
 									</div>
 								</div>
