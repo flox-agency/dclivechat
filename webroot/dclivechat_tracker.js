@@ -2,12 +2,12 @@ var dcTracker = (function () {
 
 	var url;
 	var localtime = new Date();
-	var visitorUUID;
+	var visitorInfo;
 	
 	return {
 
 		setUrl: function (data) {
-			url = data;
+			url = data.href;
 		},
 
 		/**
@@ -40,37 +40,47 @@ var dcTracker = (function () {
 		  return Y+'-'+m+'-'+d+' '+H+':'+i+':'+s;
 		},
 
-		getVisitorId : function () {
+		loadVisitorInfo : function (){
+			var now = new Date (),
+			nowTs = Math.round(now.getTime() / 1000);
 
-			return (this.loadVisitorId());
+			visitorInfo = JSON.parse(localStorage.getItem('visitorInfo'));
+
+			if(!visitorInfo) {
+
+				visitorInfo = new Object();
+
+				visitorInfo.visitorId = genVisitorId();
+				visitorInfo.actionCount = 0;
+				
+			} else {
+				if (((localtime.getTime() - visitorInfo.actionTs)/1000) > 120) {
+					visitorInfo.actionCount = 0;
+				}			
+			}
 		},
 
-		loadVisitorId : function (){
-			var now = new Date (),
-			nowTs = Math.round(now.getTime() / 1000),
-			tempContainer;
+		getRequestData: function() {
 
-			visitorUUID = localStorage.getItem('uuid');
+			var data = new Object();
+			
+			this.loadVisitorInfo();
 
-			if(!visitorUUID) {
-				visitorUUID = genVisitorId();
-				localStorage.setItem('uuid',visitorUUID);
-			}
+			data.url = url;
+			data.localtime = this.formatDate(localtime);
+			data.visitorId = visitorInfo.visitorId;
+			data.actionTs = localtime.getTime(); 
+			data.actionCount = visitorInfo.actionCount+1;
 
-			return visitorUUID;
+			localStorage.setItem('visitorInfo',JSON.stringify(data));
 
+			return data;
 		},
 
 		trackPageView : function () {
-			console.log('domain : '+document.domain);
-			console.log('path : '+window.location.href);
 			
 			$.post('/dclivechat/visits/add.json',
-				{
-					url : "'"+url+"'",
-					localtime : this.formatDate(localtime),
-					visitorId : this.getVisitorId()
-				},
+				this.getRequestData(),
 				function(data) {
 					console.log(data);
 				},
@@ -79,7 +89,7 @@ var dcTracker = (function () {
 		}
 	};
 
-})();
+}());
 
 
 /**
