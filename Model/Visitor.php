@@ -8,7 +8,11 @@
 			'Message' => array(
 				'className' => 'Message',
 				'foreignKey' => 'visitor_id'
-				)
+			),
+			'Visit' => array(
+				'className' => 'Visit',
+				'foreignKey' => 'visitor_id'
+			)
 		);
 	}
 

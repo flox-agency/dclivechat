@@ -51,7 +51,7 @@
 							<div class="status_cell" style="float: left;">
 								<div class="status_icon_served"></div>
 							</div>
-							<div class="name_cell" style="float: left;" ><?php echo $visit['Visit']['visitor_id']; ?></div>
+							<div class="name_cell" style="float: left;" ><?php echo $visit['Visitor']['name'] != null ? $visit['Visitor']['name'] : $visit['Visitor']['id'] ?></div>
 							<div class="icons_cell" style="float: left">
 								<div style="padding: 3px; display: inline-block;" alt="Toulouse, Midi-Pyrenees, France">
 									<div class="flag flag-fr"></div>

@@ -52,6 +52,10 @@ var dcTracker = (function () {
 
 				visitorInfo.visitorId = genVisitorId();
 				visitorInfo.actionCount = 0;
+				visitorInfo.user_agent = navigator.userAgent;
+				visitorInfo.hostname = url.hostname;
+				visitorInfo.platform = navigator.platform;
+				visitorInfo.browser = navigator.appCodeName;
 				
 			} else {
 				if (((localtime.getTime() - visitorInfo.actionTs)/1000) > 120) {
@@ -71,6 +75,10 @@ var dcTracker = (function () {
 			data.visitorId = visitorInfo.visitorId;
 			data.actionTs = localtime.getTime(); 
 			data.actionCount = visitorInfo.actionCount+1;
+			data.user_agent = visitorInfo.user_agent;
+			data.hostname = visitorInfo.hostname;
+			data.platform = visitorInfo.platform;
+			data.browser = visitorInfo.browser;
 
 			localStorage.setItem('visitorInfo',JSON.stringify(data));
 

@@ -10,17 +10,15 @@
 			$serverTime = new DateTime();
 			
 			$activesVisits = $this->Visit->find('all',array('conditions'=>array('DATE_ADD(visitor_last_action_time, INTERVAL 60 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
-																'order'=>'id DESC'));
+																'order'=>'Visit.id DESC'));
 			$this->set('activesVisits',$activesVisits);
 			
 			$inactivesVisits = $this->Visit->find('all',array('conditions'=>array('DATE_ADD(visitor_last_action_time, INTERVAL 60 SECOND) <'=> $serverTime->format('Y-m-d H:i:s'),
 																				'DATE_ADD(visitor_last_action_time, INTERVAL 120 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
-																'order'=>'id DESC'));
+																'order'=>'Visit.id DESC'));
 			$this->set('inactivesVisits',$inactivesVisits);
 
 		}
-		
-		
 
 		public function add()
 		{
@@ -42,11 +40,24 @@
 				$localtime = new DateTime($params['localtime']);
 				$visitorId = $params['visitorId'];
 				$actionCount = $params['actionCount'];
+				$user_agent = $params['user_agent'];
+				$hostname = $params['hostname'];
+				$platform = $params['platform'];
+				$browser = $params['browser'];
+
+				//Création du visiteur si celui-ci n'existe pas
+				if(!$this->Visit->Visitor->find('first',array('conditions'=>array('Visitor.id'=>$visitorId)))) {
+					
+					//Création et enregistrement du visitor
+					$visitor['id'] = $visitorId;
+					$this->Visit->Visitor->save($visitor);
+
+				}
 
 				//vérification de l'existence d'une visite de l'utilisateur datant de moins d'une minute
-				$lastVisit = $this->Visit->find('first',array('conditions'=>array('visitor_id'=>$visitorId,
+				$lastVisit = $this->Visit->find('first',array('conditions'=>array('Visit.visitor_id'=>$visitorId,
 																				'DATE_ADD(visitor_last_action_time, INTERVAL 120 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
-																'order'=>'id DESC'));
+																'order'=>array('Visit.id' => 'DESC')));
 				
 				//Si aucune visite trouvée
 				if (!$lastVisit) {
@@ -59,6 +70,10 @@
 					$data['visitor_last_action_time'] = $serverTime->format('Y-m-d H:i:s');
 					$data['visitor_id'] = $visitorId;
 					$data['visit_total_actions'] = $actionCount;
+					$data['user_agent'] = $user_agent;
+					$data['hostname'] = $hostname;
+					$data['platform'] = $platform;
+					$data['browser'] = $browser;
 
 					//Enregistrement de la visite
 					$this->Visit->create();
@@ -93,7 +108,7 @@
 				$this->layout = 'ajax';
 				$serverTime = new DateTime();			
 				$activesVisits = $this->Visit->find('all',array('conditions'=>array('DATE_ADD(visitor_last_action_time, INTERVAL 60 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
-																'order'=>'id DESC'));
+																'order'=>'Visit.id DESC'));
 				$this->set('activesVisits',$activesVisits);	
 
 			}
@@ -107,7 +122,7 @@
 				$serverTime = new DateTime();			
 				$inactivesVisits = $this->Visit->find('all',array('conditions'=>array('DATE_ADD(visitor_last_action_time, INTERVAL 60 SECOND) <'=> $serverTime->format('Y-m-d H:i:s'),
 																				'DATE_ADD(visitor_last_action_time, INTERVAL 120 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
-																'order'=>'id DESC'));
+																'order'=>'Visit.id DESC'));
 				$this->set('inactivesVisits',$inactivesVisits);	
 
 			}

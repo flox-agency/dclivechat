@@ -213,6 +213,15 @@ color: #BBB !important;
 border-bottom: 1px solid #E5E5E5;
 padding-bottom: 4px;
 }
+
+.activity_list .visitorlist_row:hover {
+background: whiteSmoke;
+border: 1px solid #DDD;
+border-width: 1px 0 1px;
+position: relative;
+margin-bottom: -1px;
+z-index: 1;
+}
 .activity_list .visitor_table > div {
 padding: 0 0 0 10px;
 color: #555;
