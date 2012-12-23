@@ -46,7 +46,7 @@
 			<?php foreach ($visits as $visit): ?>
 			<div class="list">
 				<div class="list_content">
-					<div class="visitorlist_row">
+					<div class="visitorlist_row" conversationId=3 >
 						<div class="visitor_table" style="width:100%">
 							<div class="status_cell" style="float: left;">
 								<div class="status_icon_served"></div>
