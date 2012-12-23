@@ -2,11 +2,6 @@ $(document).ready(function () {
 	
 	//setTimeout(refreshList,30*1000);
 
-	$('.visitorlist_row').click(function () {
-		$('#dialog').jqm({ajax: '/dclivechat/conversations/view/'+ $(this).attr('conversationId')});
-		$('#dialog').jqmShow();
-	})
-
 });
 
 function refreshList () {

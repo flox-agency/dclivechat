@@ -1,6 +1,6 @@
 <?php 
-echo $this->Html->script('jqModal');
-echo $this->Html->css('jqModal');
+	echo $this->Html->script('jqModal');
+	echo $this->Html->css('jqModal');
 ?>
 <div class="page_header">
 	<span class="h3">
@@ -27,6 +27,12 @@ echo $this->Html->css('jqModal');
 </div>
 <div class="jqmWindow jqmID1" id="dialog" style="z-index: 3000; display: none;">
 </div>
+<script type="text/javascript">
+	$('.visitorlist_row').click(function () {
+		$('#dialog').jqm({ajax: '/dclivechat/conversations/view/'+ $(this).attr('conversationId')});
+		$('#dialog').jqmShow();
+	})
+</script>
 
 
 
