@@ -5,10 +5,11 @@
 	the Window's z-index value will be set to 3000 by default (via jqModal.js). */
 	
 .jqmWindow {
-    display: none;
+
+    /*display: none;*/
     
     position: fixed;
-    top: 17%;
+    /*top: 17%;
     left: 50%;
     
     margin-left: -300px;
@@ -17,7 +18,7 @@
     background-color: #EEE;
     color: #333;
     border: 1px solid black;
-    padding: 12px;
+    padding: 12px; */
 }
 
 .jqmOverlay { background-color: #000; }

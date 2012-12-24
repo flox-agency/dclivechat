@@ -25,7 +25,7 @@
 		</div>
 	</div>
 </div>
-<div class="jqmWindow jqmID1" id="dialog" style="z-index: 3000; display: none;">
+<div class="jqmWindow jqmID1 chat_panel" id="dialog" style="z-index: 3000; display: none;">
 </div>
 <script type="text/javascript">
 	$('.visitorlist_row').click(function () {
