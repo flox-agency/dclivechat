@@ -4,14 +4,14 @@
 		var $name = 'Conversations';	
 		var $scaffold;
 
-		public function view($id)
+		public function view($visitorId)
 		{
 			if($this->request->is('ajax')) {
 				$this->layout = 'ajax';
 
-				$conversation = $this->Conversation->find('first',array('conditions'=>array('Conversation.id'=>$id)));
-
+				$conversation = $this->Conversation->getActiveConversation($visitorId);
 				$this->set('conversation',$conversation);
+				$this->set('visitorId',$visitorId);
 			}
 		}
 	}

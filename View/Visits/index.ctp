@@ -29,7 +29,7 @@
 </div>
 <script type="text/javascript">
 	$('.visitorlist_row').click(function () {
-		$('#dialog').jqm({ajax: '/dclivechat/conversations/view/'+ $(this).attr('conversationId')});
+		$('#dialog').jqm({ajax: '/dclivechat/conversations/view/'+ $(this).attr('visitorId')});
 		$('#dialog').jqmShow();
 	})
 </script>

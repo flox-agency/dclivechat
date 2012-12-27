@@ -34,4 +34,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 	public $components = array('RequestHandler');
 	public $helpers = array('Js');
+
+	public $visit_active_time = 60;
+	public $visit_lifetime = 120;
 }

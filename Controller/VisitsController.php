@@ -7,15 +7,10 @@
 		
 		public function index(){
 
-			$serverTime = new DateTime();
-			
-			$activesVisits = $this->Visit->find('all',array('conditions'=>array('DATE_ADD(visitor_last_action_time, INTERVAL 60 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
-																'order'=>'Visit.id DESC'));
+			$activesVisits = $this->Visit->getActivesVisits();
 			$this->set('activesVisits',$activesVisits);
 			
-			$inactivesVisits = $this->Visit->find('all',array('conditions'=>array('DATE_ADD(visitor_last_action_time, INTERVAL 60 SECOND) <'=> $serverTime->format('Y-m-d H:i:s'),
-																				'DATE_ADD(visitor_last_action_time, INTERVAL 120 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
-																'order'=>'Visit.id DESC'));
+			$inactivesVisits = $this->Visit->getInactivesVisits();
 			$this->set('inactivesVisits',$inactivesVisits);
 
 		}
@@ -54,10 +49,8 @@
 
 				}
 
-				//vérification de l'existence d'une visite de l'utilisateur datant de moins d'une minute
-				$lastVisit = $this->Visit->find('first',array('conditions'=>array('Visit.visitor_id'=>$visitorId,
-																				'DATE_ADD(visitor_last_action_time, INTERVAL 120 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
-																'order'=>array('Visit.id' => 'DESC')));
+				//vérification de l'existence d'une visite active de l'utilisateur
+				$lastVisit = $this->Visit->getVisitorActiveVisit($visitorId);
 				
 				//Si aucune visite trouvée
 				if (!$lastVisit) {
@@ -105,10 +98,8 @@
 		{
 			if($this->request->is('ajax')) {
 
-				$this->layout = 'ajax';
-				$serverTime = new DateTime();			
-				$activesVisits = $this->Visit->find('all',array('conditions'=>array('DATE_ADD(visitor_last_action_time, INTERVAL 60 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
-																'order'=>'Visit.id DESC'));
+				$this->layout = 'ajax';			
+				$activesVisits = $this->Visit->getActivesVisits();;
 				$this->set('activesVisits',$activesVisits);	
 
 			}
@@ -118,11 +109,8 @@
 		{
 			if($this->request->is('ajax')) {
 
-				$this->layout = 'ajax';
-				$serverTime = new DateTime();			
-				$inactivesVisits = $this->Visit->find('all',array('conditions'=>array('DATE_ADD(visitor_last_action_time, INTERVAL 60 SECOND) <'=> $serverTime->format('Y-m-d H:i:s'),
-																				'DATE_ADD(visitor_last_action_time, INTERVAL 120 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
-																'order'=>'Visit.id DESC'));
+				$this->layout = 'ajax';			
+				$inactivesVisits = $this->Visit->getInactivesVisits();
 				$this->set('inactivesVisits',$inactivesVisits);	
 
 			}
