@@ -60,7 +60,7 @@
                                                 23
                                             </div>
                                             <div class="boxie_label" >
-                                                Past Visits
+                                                Visites
                                             </div>
                                         </div>
                                         <div class="boxie">
@@ -68,7 +68,7 @@
                                                 10
                                             </div>
                                             <div class="boxie_label">
-                                                Past Chats
+                                                Chats
                                             </div>
                                         </div>
                                         <div class="boxie">
@@ -76,7 +76,7 @@
                                                 5 hr
                                             </div>
                                             <div class="boxie_label">
-                                                Time on Site
+                                                Durée
                                             </div>
                                         </div>
                                     </div>
@@ -193,10 +193,10 @@
       <div style="margin: 0px; position: relative; z-index: 98; height: 40px;margin-bottom: 10px;" class="page_header" >
             <div style="float: left;"  class="button_bar">
                 <button value="0" class="option active" tabindex="4">
-                    Current Chat
+                    Conversation actuelle
                 </button>
                 <button value="1" class="option" tabindex="5">
-                    Past Chats (10)
+                    Conversations précédentes (10)
                 </button>
                 
             </div>

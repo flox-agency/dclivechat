@@ -28,7 +28,7 @@
         public function getVisitorActiveVisit($visitorId=null){
 
             $serverTime = new DateTime();
-            $this->find('first',array('conditions'=>array('Visit.visitor_id'=>$visitorId,
+            return $this->find('first',array('conditions'=>array('Visit.visitor_id'=>$visitorId,
                                                                 'DATE_ADD(visitor_last_action_time, INTERVAL 120 SECOND) >'=> $serverTime->format('Y-m-d H:i:s')),
                                             'order'=>array('Visit.id' => 'DESC')));
         }
