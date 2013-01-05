@@ -292,7 +292,7 @@
 	  }
 	}
 
-	function refreshList () {
+	function refreshMessagesList () {
 		var data = new Object();
 
 		ts = localStorage.getItem('ts');
@@ -314,13 +314,13 @@
 			data: data, 
 			success : function (data) {
 				$(".typing").html(data);
-				refreshList();
+				refreshMessagesList();
 			}
 		});
 		return false;
 	}
 	
-	refreshList();
+	refreshMessagesList();
 </script>
 
 	

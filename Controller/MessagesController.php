@@ -33,7 +33,8 @@
 				$visitorId = $this->request->query['visitorId'];
 
 				while((time() - $serverTime->getTimestamp()) < 30 )	 {		
-					$res = $this->Message->find('first',array('conditions'=>array('UNIX_TIMESTAMP(Message.created) >' => $ts)));
+					$res = $this->Message->find('first',array('conditions'=>array('UNIX_TIMESTAMP(Message.created) >' => $ts,
+																					'Message.visitor_id'=>$visitorId)));
 					if($res) break;
 
 					sleep(1);
