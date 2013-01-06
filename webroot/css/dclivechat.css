@@ -231,6 +231,7 @@ text-overflow: ellipsis;
 -o-text-overflow: ellipsis;
 -ms-text-overflow: ellipsis;
 line-height: 18px;
+min-height: 18px;
 }
 
 .activity_list .visitor_table .table_header {
