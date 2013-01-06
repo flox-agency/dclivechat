@@ -9,7 +9,7 @@
 			if(!empty($this->request->data)) {
 
 				$convers = $this->Message->Conversation->getActiveConversation($this->request->data['visitorId']);
-				if(!$convers) $convers = $this->Message->Conversation->getNewConversation();
+				if(!$convers) $convers = $this->Message->Conversation->getNewConversation($this->request->data['visitorId']);
 
 				$data = array();
 				$data['visitor_id'] = $this->request->data['visitorId'];

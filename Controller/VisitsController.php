@@ -13,6 +13,10 @@
 			$inactivesVisits = $this->Visit->getInactivesVisits();
 			$this->set('inactivesVisits',$inactivesVisits);
 
+/*			$lastMsg = $this->Visit->Conversation->getLastMessage(102);
+			$this->log($lastMsg,'debug');
+			$this->set('lastMsg',$lastMsg);*/
+
 		}
 
 		public function add()

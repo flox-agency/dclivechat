@@ -34,10 +34,9 @@
 					<div class="table_header numbers_cell" style="float: right;" >
 						<span style="width: 100%;" ># Visites</span>
 					</div>
-					<div class="table_header page_cell" style="float: right;" ><span style="width: 100%;" >Adresse IP</span></div>
-					<div class="table_header title_cell">
+					<!-- <div class="table_header title_cell">
 						<span style="width: 100%;">Page</span>
-					</div>
+					</div> -->
 					<div class="table_header message_cell">
 						<span style="width: 100%;">Message</span>
 					</div>
@@ -72,9 +71,19 @@
 								</div>
 								<span style="width: 100%;"><?php echo $visit['Visit']['location_ip'] ?> </span>
 							</div>
+							<!-- Code pour la colone page
 							<div>
 								<span class="number_tag"><?php echo $visit['Visit']['visit_total_actions'] ?> </span>
 								<span >Page d'accueil</span>
+							</div> -->
+							<div>
+								<span>
+									<?php 
+										if ($visit['Conversation']['id']) {
+											echo $visit['Conversation']['last_message']['Message']['message'];
+										}
+									?>
+								</span>
 							</div>
 						</div>
 					</div>

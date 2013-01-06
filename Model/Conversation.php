@@ -9,6 +9,12 @@ class Conversation extends AppModel {
 				'foreignKey' => 'conversation_id'
 				)
 		);
+	var $belongsTo = array(
+        'Visit' => array(
+            'classname' => 'Visit',
+            'foreignKey' => 'visit_id'
+            )
+        );
 
 	public function getActiveConversation($visitorId=null)
 	{
@@ -24,10 +30,19 @@ class Conversation extends AppModel {
 			return null;
 	}
 
-	public function getNewConversation()
+	public function getNewConversation($visitorId=null)
 	{
-		$this->create();
-		return $this->save();
+		$visit = $this->Visit->getVisitorActiveVisit($visitorId);
+		$data['Conversation']['visit_id'] = $visit['Visit']['id'];
+		return $this->save($data);
+	}
+
+	public function getLastMessage($conversId=null)
+	{
+		$lastMsg = $this->Message->find('first',array('conditions'=>array('Message.conversation_id' => $conversId),
+											'order' => array('Message.created'=>'DESC')));
+
+		return $lastMsg;
 	}
 }
 	
