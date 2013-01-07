@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	
-	setTimeout(refreshList,30*1000);
+	setTimeout(refreshList,2*1000);
 
 });
 
