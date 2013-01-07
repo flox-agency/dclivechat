@@ -1,6 +1,6 @@
 $(document).ready(function () {
 	
-	setTimeout(refreshList,30*1000);
+	setTimeout(refreshList,2*1000);
 
 });
 
@@ -21,6 +21,6 @@ function refreshList () {
 		}
 	});
 
-	setTimeout(refreshList, 30*1000);
+	setTimeout(refreshList, 2*1000);
 	return false;
 }
